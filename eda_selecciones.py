@@ -45,7 +45,7 @@ plots[0, 1].set_ylabel('Goles equipo visitante')
 plots[0, 1].set_title('Relación entre goles y resultados')
 
 # Histograma de la distribución de goles totales por partido
-histogram = plots[1, 0].hist(df['Total_Goles'], bins=max_goles, color='skyblue', edgecolor='black')
+histograma = plots[1, 0].hist(df['Total_Goles'], bins=max_goles, color='skyblue', edgecolor='black')
 plots[1, 0].set_xticks([i + 0.5 for i in range(max_goles)])  
 plots[1, 0].set_xticklabels(range(1, max_goles+1))
 plots[1, 0].set_xlabel('Goles totales')
@@ -54,9 +54,9 @@ plots[1, 0].set_title('Distribución de goles totales por partido')
 
 # Anotaciones en cada columna para dar informacion mas detallada
 max_height = plots[1, 0].get_ylim()[1] * 0.85  # 95% de la altura maxima para que no sobrepase el borde
-for bar, freq in zip(histogram[2], histogram[0]):
+for bar, freq in zip(histograma[2], histograma[0]):
     height = min(bar.get_height(), max_height)
-    plots[1, 0].annotate('{}'.format(int(freq)),  # Convert to integer
+    plots[1, 0].annotate('{}'.format(int(freq)),  # Conversión a integer de frecuencia
                         xy=(bar.get_x() + bar.get_width() / 2, height),
                         xytext=(0, 3),
                         textcoords="offset points",
